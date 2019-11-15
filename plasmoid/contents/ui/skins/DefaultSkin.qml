@@ -41,16 +41,16 @@ BaseSkin {
         columnSpacing: 0
         rowSpacing: 0
 
-        DatePicker {
-            id: datePicker
+        // DatePicker {
+        //     id: datePicker
 
-            Layout.columnSpan: 4
-            Layout.alignment: Qt.AlignLeft
-            Layout.leftMargin: 10 * units.devicePixelRatio
-            Layout.minimumWidth: implicitWidth
-            Layout.minimumHeight: implicitHeight
-            Layout.maximumHeight: implicitHeight
-        }
+        //     Layout.columnSpan: 4
+        //     Layout.alignment: Qt.AlignLeft
+        //     Layout.leftMargin: 10 * units.devicePixelRatio
+        //     Layout.minimumWidth: implicitWidth
+        //     Layout.minimumHeight: implicitHeight
+        //     Layout.maximumHeight: implicitHeight
+        // }
 
         ColumnLayout {
             id: distroInfo
@@ -114,18 +114,18 @@ BaseSkin {
             }
         }
 
-        TimePicker {
-            id: timePicker
+        // TimePicker {
+        //     id: timePicker
 
-            Layout.columnSpan: 2
-            Layout.alignment: Qt.AlignLeft
-            Layout.leftMargin: 10 * units.devicePixelRatio
-            Layout.bottomMargin: 5 * units.devicePixelRatio
-            Layout.minimumHeight: implicitHeight
-            Layout.maximumHeight: implicitHeight
-            Layout.preferredWidth: implicitWidth
-            Layout.preferredHeight: implicitHeight
-        }
+        //     Layout.columnSpan: 2
+        //     Layout.alignment: Qt.AlignLeft
+        //     Layout.leftMargin: 10 * units.devicePixelRatio
+        //     Layout.bottomMargin: 5 * units.devicePixelRatio
+        //     Layout.minimumHeight: implicitHeight
+        //     Layout.maximumHeight: implicitHeight
+        //     Layout.preferredWidth: implicitWidth
+        //     Layout.preferredHeight: implicitHeight
+        // }
 
         UptimePicker {
             id: uptimePicker
