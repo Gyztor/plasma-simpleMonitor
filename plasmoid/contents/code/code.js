@@ -77,6 +77,9 @@ function parseOsRelease(text){
         case "VERSION" :
             arrayResult["version"]=removeQuotes(textLineSplit[i].split('=')[1])
             break
+        case "BUILD_ID" :
+            arrayResult["build_id"]=removeQuotes(textLineSplit[i].split('=')[1])
+            break
         }
     }
 

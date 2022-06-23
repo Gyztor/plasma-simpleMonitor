@@ -128,7 +128,11 @@ Rectangle {
             Code.getDistroInfo(function(info) {
                 distroName = info['name']
                 distroId = info['id']
-                distroVersion = info['version']
+                if (info['version'] != undefined) {
+                  distroVersion = info['version'];
+                } else if (info['build_id'] != undefined){
+                  distroVersion = info['build_id']; // e.g., Arch
+                }
             }, this);
 
             Code.getKernelInfo(function(info){
