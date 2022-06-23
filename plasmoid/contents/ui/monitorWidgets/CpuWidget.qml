@@ -54,7 +54,7 @@ ListView {
                 anchors.left: parent.left
                 Text {
                     id: cpuLabel
-                    text: i18n('CPU %1:', model.index)
+                    text: i18n('CPU %1:', model.index + 1)
                     font.bold: true
                     font { family: doppioOneRegular.name; pointSize: 10 }
                     color: "#ffdd55"
