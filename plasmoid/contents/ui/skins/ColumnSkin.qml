@@ -19,6 +19,7 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.4
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import "../monitorWidgets"
@@ -39,7 +40,7 @@ BaseSkin {
         id: mainLayout
 
         anchors.fill: parent
-        anchors.margins: 5 * units.devicePixelRatio
+        anchors.margins: 5 * PlasmaCore.Units.devicePixelRatio
         spacing: 0
 
         Item {
@@ -72,7 +73,7 @@ BaseSkin {
             rowSpacing: 0
 
             Layout.fillWidth: true
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
 
             ColumnLayout {
                 id: distroInfo
@@ -87,8 +88,8 @@ BaseSkin {
 
                 LogoImage {
                     id: distroLogo
-                    Layout.minimumWidth: (implicitWidth < implicitHeight) ? 100*implicitWidth/implicitHeight : 100 * units.devicePixelRatio
-                    Layout.minimumHeight: (implicitHeight < implicitWidth) ? 100*implicitHeight/implicitWidth : 100 * units.devicePixelRatio
+                    Layout.minimumWidth: (implicitWidth < implicitHeight) ? 100*implicitWidth/implicitHeight : 100 * PlasmaCore.Units.devicePixelRatio
+                    Layout.minimumHeight: (implicitHeight < implicitWidth) ? 100*implicitHeight/implicitWidth : 100 * PlasmaCore.Units.devicePixelRatio
                     Layout.preferredWidth: (Layout.fillWidth) ? Layout.minimumWidth : height * implicitWidth/implicitHeight
                     Layout.preferredHeight: (Layout.fillHeight) ? Layout.minimumHeight : width * implicitHeight/implicitWidth
                     Layout.fillWidth: (implicitWidth < implicitHeight) ? false: true
@@ -126,7 +127,7 @@ BaseSkin {
                     kernelVersion: root.kernelVersion
 
                     Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                    Layout.topMargin: 2 * units.devicePixelRatio
+                    Layout.topMargin: 2 * PlasmaCore.Units.devicePixelRatio
                     Layout.minimumHeight: implicitHeight
                     Layout.maximumHeight: implicitHeight
                     Layout.minimumWidth: implicitWidth
@@ -139,9 +140,9 @@ BaseSkin {
                 id: timePicker
 
                 Layout.alignment: Qt.AlignLeft
-                Layout.topMargin: -5 * units.devicePixelRatio
-                Layout.leftMargin: 10 * units.devicePixelRatio
-                Layout.bottomMargin: 5 * units.devicePixelRatio
+                Layout.topMargin: -5 * PlasmaCore.Units.devicePixelRatio
+                Layout.leftMargin: 10 * PlasmaCore.Units.devicePixelRatio
+                Layout.bottomMargin: 5 * PlasmaCore.Units.devicePixelRatio
                 Layout.minimumHeight: implicitHeight
                 Layout.maximumHeight: implicitHeight
                 Layout.preferredWidth: implicitWidth
@@ -153,9 +154,9 @@ BaseSkin {
 
                 Layout.leftMargin: 2
                 Layout.fillWidth: true
-                Layout.minimumHeight: 3 * units.devicePixelRatio
-                Layout.maximumHeight: 3 * units.devicePixelRatio
-                Layout.preferredHeight: 3 * units.devicePixelRatio
+                Layout.minimumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+                Layout.maximumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+                Layout.preferredHeight: 3 * PlasmaCore.Units.devicePixelRatio
             }
 
             GridLayout {
@@ -181,9 +182,9 @@ BaseSkin {
                     tempUnit: root.tempUnit
                     direction: root.direction
     
-                    Layout.leftMargin: 5 * units.devicePixelRatio
-                    Layout.rightMargin: 5 * units.devicePixelRatio
-                    Layout.topMargin: 5 * units.devicePixelRatio
+                    Layout.leftMargin: 5 * PlasmaCore.Units.devicePixelRatio
+                    Layout.rightMargin: 5 * PlasmaCore.Units.devicePixelRatio
+                    Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
                     Layout.fillWidth: true
                     Layout.fillHeight: false
                     Layout.minimumWidth: implicitWidth
@@ -201,9 +202,9 @@ BaseSkin {
                     tempUnit: root.tempUnit
                     direction: root.direction
     
-                    Layout.leftMargin: 5 * units.devicePixelRatio
-                    Layout.rightMargin: 5 * units.devicePixelRatio
-                    Layout.topMargin: 1 * units.devicePixelRatio
+                    Layout.leftMargin: 5 * PlasmaCore.Units.devicePixelRatio
+                    Layout.rightMargin: 5 * PlasmaCore.Units.devicePixelRatio
+                    Layout.topMargin: 1 * PlasmaCore.Units.devicePixelRatio
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     Layout.minimumWidth: implicitWidth
@@ -218,10 +219,10 @@ BaseSkin {
             color: "white"
 
             Layout.fillWidth: true
-            Layout.minimumHeight: 3 * units.devicePixelRatio
-            Layout.maximumHeight: 3 * units.devicePixelRatio
-            Layout.preferredHeight: 3 * units.devicePixelRatio
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.minimumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.maximumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.preferredHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
         }
 
         CpuWidget {
@@ -229,8 +230,8 @@ BaseSkin {
 
             direction: root.direction
 
-            Layout.leftMargin: 5 * units.devicePixelRatio
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.leftMargin: 5 * PlasmaCore.Units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
             Layout.fillWidth: true
             Layout.minimumWidth: implicitWidth
             Layout.minimumHeight: implicitHeight
@@ -242,10 +243,10 @@ BaseSkin {
             color: "white"
 
             Layout.fillWidth: true
-            Layout.minimumHeight: 3 * units.devicePixelRatio
-            Layout.maximumHeight: 3 * units.devicePixelRatio
-            Layout.preferredHeight: 3 * units.devicePixelRatio
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.minimumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.maximumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.preferredHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
         }
 
         MemArea {
@@ -258,9 +259,9 @@ BaseSkin {
             memBuffers: root.memBuffers
 
             Layout.columnSpan: 2
-            Layout.topMargin: 2 * units.devicePixelRatio
-            Layout.leftMargin: 10 * units.devicePixelRatio
-            Layout.rightMargin: 5 * units.devicePixelRatio
+            Layout.topMargin: 2 * PlasmaCore.Units.devicePixelRatio
+            Layout.leftMargin: 10 * PlasmaCore.Units.devicePixelRatio
+            Layout.rightMargin: 5 * PlasmaCore.Units.devicePixelRatio
             Layout.fillWidth: true
             Layout.minimumWidth: implicitWidth
             Layout.minimumHeight: implicitHeight
@@ -273,10 +274,10 @@ BaseSkin {
             color: "white"
 
             Layout.fillWidth: true
-            Layout.minimumHeight: 3 * units.devicePixelRatio
-            Layout.maximumHeight: 3 * units.devicePixelRatio
-            Layout.preferredHeight: 3 * units.devicePixelRatio
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.minimumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.maximumHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.preferredHeight: 3 * PlasmaCore.Units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
         }
 
         MemArea {
@@ -289,9 +290,9 @@ BaseSkin {
             memUsed: root.swapUsed
 
             Layout.columnSpan: 2
-            Layout.topMargin: 2 * units.devicePixelRatio
-            Layout.leftMargin: 10 * units.devicePixelRatio
-            Layout.rightMargin: 5 * units.devicePixelRatio
+            Layout.topMargin: 2 * PlasmaCore.Units.devicePixelRatio
+            Layout.leftMargin: 10 * PlasmaCore.Units.devicePixelRatio
+            Layout.rightMargin: 5 * PlasmaCore.Units.devicePixelRatio
             Layout.fillWidth: true
             Layout.minimumWidth: implicitWidth
             Layout.minimumHeight: implicitHeight

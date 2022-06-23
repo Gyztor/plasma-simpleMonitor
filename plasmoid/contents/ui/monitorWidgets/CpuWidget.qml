@@ -18,6 +18,7 @@
  **/
 
 import QtQuick 2.9
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 ListView {
     id: cpuListView
@@ -26,7 +27,7 @@ ListView {
     LayoutMirroring.enabled: direction === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    implicitWidth: 100 * units.devicePixelRatio
+    implicitWidth: 100 * PlasmaCore.Units.devicePixelRatio
     implicitHeight: childrenRect.height
 
     model: cpuModel
@@ -44,11 +45,11 @@ ListView {
     delegate: Item {
         id: itemElement
         width: cpuListView.width
-        height: cpuListItem.height + units.devicePixelRatio
+        height: cpuListItem.height + PlasmaCore.Units.devicePixelRatio
         Column {
             id: cpuListItem
             width: parent.width
-            height: (20 + indicatorHeight) * units.devicePixelRatio
+            height: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio
             Row {
                 spacing: 0
                 anchors.left: parent.left
@@ -74,7 +75,7 @@ ListView {
             }
             Item {
                 id: progressBar
-                height: indicatorHeight * units.devicePixelRatio
+                height: indicatorHeight * PlasmaCore.Units.devicePixelRatio
                 //clip: true
                 width: parent.width
                 Rectangle {
@@ -164,9 +165,9 @@ ListView {
                     }
                 }
                 Rectangle {
-                    height: progressBar.height + 4 * units.devicePixelRatio
-                    width: 5 * units.devicePixelRatio
-                    radius: 2 * units.devicePixelRatio
+                    height: progressBar.height + 4 * PlasmaCore.Units.devicePixelRatio
+                    width: 5 * PlasmaCore.Units.devicePixelRatio
+                    radius: 2 * PlasmaCore.Units.devicePixelRatio
                     anchors.left: rectValue.right
                     anchors.verticalCenter: parent.verticalCenter
                     color: "#88ffffff"
@@ -188,7 +189,7 @@ ListView {
 
         ListView.onAdd: SequentialAnimation {
             PropertyAction { target: cpuListItem; property: "height"; value: 0 }
-            NumberAnimation { target: cpuListItem; property: "height"; to: (20 + indicatorHeight) * units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: cpuListItem; property: "height"; to: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
         }
     }
 

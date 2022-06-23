@@ -18,6 +18,7 @@
  **/
 
 import QtQuick 2.9
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 ListView {
     id: coreTempList
@@ -27,7 +28,7 @@ ListView {
     LayoutMirroring.childrenInherit: true
 
     implicitHeight: childrenRect.height
-    implicitWidth: 100 * units.devicePixelRatio
+    implicitWidth: 100 * PlasmaCore.Units.devicePixelRatio
 
     interactive: false
 
@@ -41,10 +42,10 @@ ListView {
 
     delegate: Item {
         id: coreListTemp
-        implicitHeight: 25 * units.devicePixelRatio
+        implicitHeight: 25 * PlasmaCore.Units.devicePixelRatio
         implicitWidth: coreLabel.implicitWidth + unitLabel.implicitWidth
         width: parent.width
-        height: (20 + indicatorHeight) * units.devicePixelRatio
+        height: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio
         Text {
             id: coreLabel
             anchors.left: parent.left
@@ -65,18 +66,18 @@ ListView {
 
         Rectangle {
             id: rectValue
-            height: indicatorHeight * units.devicePixelRatio
+            height: indicatorHeight * PlasmaCore.Units.devicePixelRatio
             width: Math.round(val/coreTempList.maxTemp*parent.width)
             color: if (Math.round(val) >= coreTempList.criticalTemp) "red"
                    else if (Math.round(val) >= coreTempList.highTemp) "#ffac2a"
                    else "#85a9ff"
             anchors.top: coreLabel.bottom
             anchors.right: parent.right
-            anchors.topMargin: units.devicePixelRatio
+            anchors.topMargin: PlasmaCore.Units.devicePixelRatio
         }
         ListView.onAdd: SequentialAnimation {
             PropertyAction { target: coreListTemp; property: "height"; value: 0 }
-            NumberAnimation { target: coreListTemp; property: "height"; to: (20 + indicatorHeight) * units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: coreListTemp; property: "height"; to: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
         }
     }
 

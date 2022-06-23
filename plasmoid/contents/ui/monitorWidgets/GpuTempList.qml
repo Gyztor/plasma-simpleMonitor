@@ -18,6 +18,7 @@
  **/
 
 import QtQuick 2.9
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 ListView {
     id: gpuTempList
@@ -26,8 +27,8 @@ ListView {
     LayoutMirroring.enabled: direction === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
 
-    implicitHeight: count * 25 * units.devicePixelRatio
-    implicitWidth: 100 * units.devicePixelRatio
+    implicitHeight: count * 25 * PlasmaCore.Units.devicePixelRatio
+    implicitWidth: 100 * PlasmaCore.Units.devicePixelRatio
 
     interactive: false
 
@@ -41,10 +42,10 @@ ListView {
 
     delegate: Item {
         id: gpuListTemp
-        implicitHeight: 25 * units.devicePixelRatio
+        implicitHeight: 25 * PlasmaCore.Units.devicePixelRatio
         implicitWidth: gpuLabel.implicitWidth + unitLabel.implicitWidth
         width: parent.width
-        height: (20 + indicatorHeight) * units.devicePixelRatio
+        height: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio
         visible: showGpuTemp
         Text {
             id: gpuLabel
@@ -66,18 +67,18 @@ ListView {
 
         Rectangle {
             id: rectValue
-            height: indicatorHeight * units.devicePixelRatio
+            height: indicatorHeight * PlasmaCore.Units.devicePixelRatio
             width: Math.round(val/gpuTempList.maxTemp*parent.width)
             color: if (Math.round(val) >= coreTempList.criticalTemp) "red"
                    else if (Math.round(val) >= gpuTempList.highTemp) "#ffac2a"
                    else "#85a9ff"
             anchors.top: gpuLabel.bottom
             anchors.right: parent.right
-            anchors.topMargin: units.devicePixelRatio
+            anchors.topMargin: PlasmaCore.Units.devicePixelRatio
         }
         ListView.onAdd: SequentialAnimation {
             PropertyAction { target: gpuListTemp; property: "height"; value: 0 }
-            NumberAnimation { target: gpuListTemp; property: "height"; to: (20 + indicatorHeight) * units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
+            NumberAnimation { target: gpuListTemp; property: "height"; to: (20 + indicatorHeight) * PlasmaCore.Units.devicePixelRatio; duration: 250; easing.type: Easing.InOutQuad }
         }
     }
 

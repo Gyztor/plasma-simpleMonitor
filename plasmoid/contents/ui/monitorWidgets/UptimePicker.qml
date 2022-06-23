@@ -18,11 +18,12 @@
  **/
 
 import QtQuick 2.9
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 Row {
     property int uptime: 0
 
-    spacing: 3 * units.devicePixelRatio
+    spacing: 3 * PlasmaCore.Units.devicePixelRatio
 
     QtObject {
         id: d

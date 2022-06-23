@@ -19,6 +19,7 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.4
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 Item {
     property double memFree: 0.0
@@ -39,11 +40,11 @@ Item {
     ColumnLayout {
         id: memColumn
 
-        spacing: 2 * units.devicePixelRatio
+        spacing: 2 * PlasmaCore.Units.devicePixelRatio
         anchors.fill: parent
 
         RowLayout {
-            spacing: 3 * units.devicePixelRatio
+            spacing: 3 * PlasmaCore.Units.devicePixelRatio
             Text {
                 id: memType
                 text: i18n("Mem:")
@@ -59,7 +60,7 @@ Item {
 
         RowLayout {
             id: memoryInfoLabels
-            spacing: 3 * units.devicePixelRatio
+            spacing: 3 * PlasmaCore.Units.devicePixelRatio
             property int fontSize : 8
             Text {
                 text: i18n("Used:")
@@ -87,7 +88,7 @@ Item {
 
         Rectangle {
             id: rectTotalMemory
-            height: 7 * units.devicePixelRatio
+            height: 7 * PlasmaCore.Units.devicePixelRatio
             Layout.fillWidth: true
             color: "#7ec264"
             Rectangle {

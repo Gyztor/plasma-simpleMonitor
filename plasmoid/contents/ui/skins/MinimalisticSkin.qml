@@ -19,6 +19,7 @@
 
 import QtQuick 2.9
 import QtQuick.Layouts 1.4
+import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
 import "../monitorWidgets"
@@ -35,7 +36,7 @@ BaseSkin {
         id: mainLayout
 
         anchors.fill: parent
-        anchors.margins: 5 * units.devicePixelRatio
+        anchors.margins: 5 * PlasmaCore.Units.devicePixelRatio
         columns: 4
         rows: 8
         columnSpacing: 0
@@ -45,7 +46,7 @@ BaseSkin {
             id: distroInfo
 
             Layout.rowSpan: 3
-            Layout.topMargin: 5 * units.devicePixelRatio
+            Layout.topMargin: 5 * PlasmaCore.Units.devicePixelRatio
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.minimumWidth: implicitWidth
@@ -55,8 +56,8 @@ BaseSkin {
 
             LogoImage {
                 id: distroLogo
-                Layout.minimumWidth: (implicitWidth < implicitHeight) ? 100*implicitWidth/implicitHeight : 100 * units.devicePixelRatio
-                Layout.minimumHeight: (implicitHeight < implicitWidth) ? 100*implicitHeight/implicitWidth : 100 * units.devicePixelRatio
+                Layout.minimumWidth: (implicitWidth < implicitHeight) ? 100*implicitWidth/implicitHeight : 100 * PlasmaCore.Units.devicePixelRatio
+                Layout.minimumHeight: (implicitHeight < implicitWidth) ? 100*implicitHeight/implicitWidth : 100 * PlasmaCore.Units.devicePixelRatio
                 Layout.preferredWidth: (Layout.fillWidth) ? Layout.minimumWidth : height * implicitWidth/implicitHeight
                 Layout.preferredHeight: (Layout.fillHeight) ? Layout.minimumHeight : width * implicitHeight/implicitWidth
                 Layout.fillWidth: (implicitWidth < implicitHeight) ? false: true
@@ -94,7 +95,7 @@ BaseSkin {
                 kernelVersion: root.kernelVersion
 
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-                Layout.topMargin: 2 * units.devicePixelRatio
+                Layout.topMargin: 2 * PlasmaCore.Units.devicePixelRatio
                 Layout.minimumHeight: implicitHeight
                 Layout.maximumHeight: implicitHeight
                 Layout.minimumWidth: implicitWidth
