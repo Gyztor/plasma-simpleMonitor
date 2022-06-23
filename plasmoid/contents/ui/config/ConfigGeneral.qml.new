@@ -17,9 +17,9 @@
  * along with plasma-simpleMonitor.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.4
+import QtQuick 2.0
+import QtQuick.Controls 1.0
+import QtQuick.Layouts 1.1
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 import "../../code/code.js" as Code
@@ -46,7 +46,6 @@ Item {
     property int cfg_tempUnit
     property alias cfg_cpuHighTemp: cpuHighTempSpinBox.value
     property alias cfg_cpuCritTemp: cpuCritTempSpinBox.value
-    property alias cfg_cpuMaxVisible: cpuMaxVisibleSpinBox.value
 
     QtObject {
         id: d
@@ -62,16 +61,16 @@ Item {
 
     onCfg_bgColorChanged: {
         switch (cfg_bgColor) {
-            default: case 0: bgColorTypeGroup.checkedButton = standardBgColor; break;
-            case 1: bgColorTypeGroup.checkedButton = crystalBgColor; break;
-            case 2: bgColorTypeGroup.checkedButton = translucentBgColor; break;
+            default: case 0: bgColorTypeGroup.current = standardBgColor; break;
+            case 1: bgColorTypeGroup.current = crystalBgColor; break;
+            case 2: bgColorTypeGroup.current = translucentBgColor; break;
         }
     }
 
     onCfg_tempUnitChanged: {
         switch (cfg_tempUnit) {
-            default: case 0: tempUnitTypeGroup.checkedButton = celsiusTemp; break;
-            case 1: tempUnitTypeGroup.checkedButton = fahrenheitTemp; break;
+            default: case 0: tempUnitTypeGroup.current = celsiusTemp; break;
+            case 1: tempUnitTypeGroup.current = fahrenheitTemp; break;
         }
     }
 
@@ -80,11 +79,11 @@ Item {
         cfg_tempUnitChanged();
     }
 
-    ButtonGroup {
+    ExclusiveGroup {
         id: bgColorTypeGroup
     }
 
-    ButtonGroup {
+    ExclusiveGroup {
         id: tempUnitTypeGroup
     }
 
@@ -116,12 +115,12 @@ Item {
                 Rectangle {
 
                     Layout.columnSpan: 2
-                    Layout.alignment: Qt.AlignHCenter
+                    Layout.alignment: Qt.AlignLeft
                     Layout.row: 1
                     Layout.column: 1
 
                     implicitHeight: logoImage.height + 10
-                    implicitWidth:  logoImage.width + 10
+                    implicitWidth:  logoComboBox.width + 10
 
                     color: "transparent"
                     border { width: 1; color: theme.buttonTextColor }
@@ -146,7 +145,7 @@ Item {
 
                 RadioButton {
                     id: standardBgColor
-                    ButtonGroup.group: bgColorTypeGroup
+                    exclusiveGroup: bgColorTypeGroup
                     text: i18n("Standard")
                     onCheckedChanged: if (checked) cfg_bgColor = 0;
                     Layout.row: 2
@@ -155,7 +154,7 @@ Item {
 
                 RadioButton {
                     id: crystalBgColor
-                    ButtonGroup.group: bgColorTypeGroup
+                    exclusiveGroup: bgColorTypeGroup
                     text: i18n("Crystal")
                     onCheckedChanged: if (checked) cfg_bgColor = 1;
                     Layout.row: 3
@@ -164,7 +163,7 @@ Item {
 
                 RadioButton {
                     id: translucentBgColor
-                    ButtonGroup.group: bgColorTypeGroup
+                    exclusiveGroup: bgColorTypeGroup
                     text: i18n("Translucent")
                     onCheckedChanged: if (checked) cfg_bgColor = 2;
                     Layout.row: 4
@@ -227,7 +226,7 @@ Item {
 
                 RadioButton {
                     id: celsiusTemp
-                    ButtonGroup.group: tempUnitTypeGroup
+                    exclusiveGroup: tempUnitTypeGroup
                     text: i18n("Celsius °C")
                     onCheckedChanged: if (checked) cfg_tempUnit = 0;
                     Layout.row: 1
@@ -236,7 +235,7 @@ Item {
 
                 RadioButton {
                     id: fahrenheitTemp
-                    ButtonGroup.group: tempUnitTypeGroup
+                    exclusiveGroup: tempUnitTypeGroup
                     text: i18n("Fahrenheit °F")
                     onCheckedChanged: if (checked) cfg_tempUnit = 1;
                     Layout.row: 2
@@ -265,20 +264,8 @@ Item {
 
                 SpinBox {
                     id: cpuCritTempSpinBox
-                    to: 150
-                }
-
-                Label {
-                    text: i18n("Visible CPU cores")
-                    Layout.alignment: Qt.AlignRight
-                    Layout.row: 5
-                    Layout.column: 0
-                }
-
-                SpinBox {
-                    id: cpuMaxVisibleSpinBox
-                    to: 128
-                    Layout.row: 5
+                    maximumValue: 150
+                    Layout.row: 4
                     Layout.column: 1
                 }
             }

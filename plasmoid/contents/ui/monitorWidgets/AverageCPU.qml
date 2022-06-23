@@ -17,16 +17,25 @@
  * along with plasma-simpleMonitor.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-import QtQuick 2.9
-import QtQuick.Layouts 1.4
+import QtQuick 2.0
+import QtQuick.Layouts 1.1
 
 Item {
-    property double memFree: 0.0
-    property double memTotal: 0.0
-    property double memCached: 0.0
-    property double memUsed: 0.0
-    property double memBuffers: 0.0
-    property alias memTypeLabel : memType.text
+
+    property double avgLoad: cpuModel.count > 0 ? (cpuModel
+                .getAll()
+                .map(it => parseInt(it.val))
+                .reduce((sum, curr) => sum + curr, 0) / cpuModel.count)
+                .toFixed(0) : 0
+
+    property double avgTemp: coreTempModel.count > 0 ? (coreTempModel
+            .getAll()
+            .map(it => parseInt(it.val))
+            .reduce((sum, curr) => sum + curr, 0) / coreTempModel.count)
+            .toFixed(0) : 0
+
+    property int highTemp: 87
+    property int criticalTemp : 105
 
     implicitWidth: memColumn.implicitWidth
     implicitHeight: memColumn.implicitHeight
@@ -39,64 +48,41 @@ Item {
     ColumnLayout {
         id: memColumn
 
-        spacing: 2 * units.devicePixelRatio
+        spacing: 2
         anchors.fill: parent
 
         RowLayout {
-            spacing: 3 * units.devicePixelRatio
+            spacing: 3
             Text {
-                id: memType
-                text: i18n("Mem:")
+                text: i18n("CPU:")
                 font { family: doppioOneRegular.name; pointSize: 12 }
                 color: "#ffdd55"
             }
             Text {
-                text: i18n("%1 GiB", memTotal.toFixed(2))
+                text: i18n("%1%", avgLoad)
                 font { family: doppioOneRegular.name; pointSize: 12 }
-                color: "white"
-            }
-        }
-
-        RowLayout {
-            id: memoryInfoLabels
-            spacing: 3 * units.devicePixelRatio
-            property int fontSize : 8
-            Text {
-                text: i18n("Used:")
-                color: "red"
-                font.pointSize: memoryInfoLabels.fontSize
+                color: avgLoad < 80 ? "white" : "red"
             }
             Text {
-                id: memUsedText
-                text: i18n("%1 GiB", (memUsed-(memBuffers+memCached)).toFixed(2))
-                color: "white"
-                font.pointSize: memoryInfoLabels.fontSize
-            }
-            Text {
-                text: i18n("Free:")
-                color: "#7ec264"
-                font.pointSize: memoryInfoLabels.fontSize
-            }
-            Text {
-                id: memFreeText
-                text: i18n("%1 GiB", (memFree+(memBuffers+memCached)).toFixed(2))
-                color: "white"
-                font.pointSize: memoryInfoLabels.fontSize
+                text:  (tempUnit ? Math.floor((avgTemp * 9/5)+32) : avgTemp) + (tempUnit ? "ºF" : "ºC")
+                font { family: doppioOneRegular.name; pointSize: 12 }
+                color: avgTemp >= highTemp ? "red" : avgTemp >= criticalTemp ? "#ffcc00" : "white"
             }
         }
 
         Rectangle {
-            id: rectTotalMemory
-            height: 7 * units.devicePixelRatio
+            id: rectTotalCPU
+            height: 5
             Layout.fillWidth: true
             color: "#7ec264"
             Rectangle {
-                id: rectUsedMemory
+                id: rectUsedCPU
                 anchors.left: parent.left
                 height: parent.height
-                width: (memUsed-(memBuffers+memCached))/memTotal*parent.width
+                width: (avgLoad)/100*parent.width
                 color: "red"
             }
         }
     }
 }
+

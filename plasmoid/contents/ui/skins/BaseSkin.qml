@@ -17,7 +17,7 @@
  * along with plasma-simpleMonitor.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-import QtQuick 2.0
+import QtQuick 2.9
 
 Item {
     property int bgColor:           confEngine.bgColor
